@@ -27,20 +27,37 @@ public class Diario extends AppCompatActivity {
         spinnerHamsterType = findViewById(R.id.sp_hamster_type);
         gridViewHamsters = findViewById(R.id.grid_hamsters);
 
-        // Inicializar la lista de hamsters (puedes cargarlos desde tus recursos)
+        // Array de las categorias de hamster
         hamsterList = new ArrayList<>();
-        hamsterList.add(new Hamster("Hamster 1", R.drawable.hamster_tipeo, "hamster bueno"));
-        hamsterList.add(new Hamster("Hamster 2", R.drawable.hamster_tipeo, "hamster bueno"));
-        hamsterList.add(new Hamster("Hamster 3", R.drawable.hamster_tipeo, "hamster malo"));
-        hamsterList.add(new Hamster("Hamster 4", R.drawable.hamster_tipeo, "hamster malo"));
+
+        //- - - - - - CATEGORIA DE HAMSTERS - - - - - -
+
+        //              Hamster Bueno
+        hamsterList.add(new Hamster("Hamster 0", R.drawable.hamster_tipeo, "Hamster bueno"));
+        hamsterList.add(new Hamster("Hamster 1", R.drawable.hamster_tipeo, "Hamster bueno"));
+        hamsterList.add(new Hamster("Hamster 2", R.drawable.hamster_tipeo, "Hamster bueno"));
+        hamsterList.add(new Hamster("Hamster 3", R.drawable.hamster_tipeo, "Hamster bueno"));
+
+        //              Hamster Neutral
+        hamsterList.add(new Hamster("Hamster 4", R.drawable.hamster_tipeo, "Hamster neutral"));
+        hamsterList.add(new Hamster("Hamster 5", R.drawable.hamster_tipeo, "Hamster neutral"));
+
+        //              Hamster Malo
+        hamsterList.add(new Hamster("Hamster 6", R.drawable.hamster_tipeo, "Hamster malo"));
+        hamsterList.add(new Hamster("Hamster 7", R.drawable.hamster_tipeo, "Hamster malo"));
+        hamsterList.add(new Hamster("Hamster 8", R.drawable.hamster_tipeo, "Hamster malo"));
+
         // Agrega más hamsters con diferentes categorías
+
+
 
         // Crear una copia de la lista de hamsters para filtrar
         filteredHamsters = new ArrayList<>(hamsterList);
 
     // Configurar un adaptador ArrayAdapter para el GridView
-        ArrayAdapter<Hamster> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredHamsters);
+        ArrayAdapter<Hamster> adapter = new ArrayAdapter<>(this, R.layout.item_hamster_custom, R.id.hamster_name_text_view, filteredHamsters);
         gridViewHamsters.setAdapter(adapter);
+
 
 
 
@@ -66,7 +83,9 @@ public class Diario extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Aquí puedes manejar la lógica si no se selecciona nada en el Spinner
+
+                //cambiar la logica de spinner o añadir xd
+
             }
         });
     }
