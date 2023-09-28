@@ -38,9 +38,11 @@ public class Diario extends AppCompatActivity {
         // Crear una copia de la lista de hamsters para filtrar
         filteredHamsters = new ArrayList<>(hamsterList);
 
-        // Configurar un adaptador ArrayAdapter para el GridView
-        ArrayAdapter<Hamster> adapter = new ArrayAdapter<>(this, R.layout.item_hamster_card, R.id.hamster_image_view, filteredHamsters);
+    // Configurar un adaptador ArrayAdapter para el GridView
+        ArrayAdapter<Hamster> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredHamsters);
         gridViewHamsters.setAdapter(adapter);
+
+
 
         // Configurar el Spinner con las categorías únicas de los hamsters
         Set<String> uniqueCategories = new HashSet<>();
