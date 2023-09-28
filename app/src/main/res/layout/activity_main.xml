@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+
+    android:background="@drawable/fondo_inicio"
+
+    >
+
+
+    <ImageView
+        android:layout_width="728dp"
+        android:layout_height="408dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="71dp"
+        app:srcCompat="@drawable/hamsterium_titulo" />
+
+    <Button
+        android:id="@+id/idJugar"
+        android:layout_width="291dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginStart="261dp"
+        android:layout_marginEnd="250dp"
+
+        android:layout_marginBottom="505dp"
+        android:text="Jugar"
+        android:textSize="70dp" />
+
+    <Button
+        android:id="@+id/btnDiario"
+        android:layout_width="291dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="70dp"
+
+        android:layout_marginBottom="200dp"
+        android:text="Diario"
+
+        android:textSize="70dp" />
+
+    <Button
+        android:id="@+id/config"
+        android:layout_width="291dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginStart="460dp"
+        android:layout_marginEnd="70dp"
+
+        android:layout_marginBottom="200dp"
+        android:text="Config"
+        android:textSize="70dp" />
+
+</RelativeLayout>
