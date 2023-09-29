@@ -24,6 +24,11 @@
             android:id="@+id/hamster_name_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre del Hamster" />
+            android:text="Nombre del Hamster"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:fontFamily="@font/blackjar"
+
+            />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
