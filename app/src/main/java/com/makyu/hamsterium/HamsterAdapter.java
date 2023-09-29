@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import android.widget.ListAdapter;
+
 
 public class HamsterAdapter extends RecyclerView.Adapter<HamsterAdapter.ViewHolder> {
 

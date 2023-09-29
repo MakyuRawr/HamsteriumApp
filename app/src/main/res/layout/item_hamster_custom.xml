@@ -9,9 +9,8 @@
         android:id="@+id/hamster_image_view"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/hamster_lou"
-        android:contentDescription="@null" />
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/hamster_name_text_view"
