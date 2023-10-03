@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:gravity="center">
 
+
+    <!-- dimensiones de la imagen del item hamster-->
     <ImageView
         android:id="@+id/hamster_image_view"
         android:layout_width="350dp"

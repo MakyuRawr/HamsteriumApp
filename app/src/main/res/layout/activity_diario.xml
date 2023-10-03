@@ -9,6 +9,8 @@
     android:padding="16dp"
     tools:context=".Diario">
 
+
+    <!-- barra de categorias-->
     <Spinner
         android:id="@+id/sp_hamster_type"
         android:layout_width="wrap_content"
@@ -17,6 +19,8 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/wood_3" />
 
+
+    <!-- Mostrar hamster segun su categoria -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/grid_hamsters"
         android:layout_width="1005dp"

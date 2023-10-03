@@ -16,12 +16,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- elegimos una imagen por defecto en caso de que nos de error nos demos cuenta  -->
         <ImageView
             android:id="@+id/hamster_image_view"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:src="@drawable/hamster_lou" />
 
+
+        <!-- configuramos el nombre de los hamsters en el diario -->
         <TextView
             android:id="@+id/hamster_name_text_view"
             android:layout_width="match_parent"

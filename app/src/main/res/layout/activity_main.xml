@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
 
-    android:background="@drawable/fondo_inicio"
-
-    >
+    android:background="@drawable/fondo_inicio">
 
 
     <ImageView
