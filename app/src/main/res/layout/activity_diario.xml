@@ -4,29 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3E3D6"
+    android:backgroundTint="#F3E3D6"
     android:padding="16dp"
     tools:context=".Diario">
 
     <Spinner
         android:id="@+id/sp_hamster_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:layout_width="188dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/wood_3" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/grid_hamsters"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="3"
+        android:layout_width="1005dp"
+        android:layout_height="630dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="79dp"
+        android:layout_marginBottom="6dp"
         android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
+        android:numColumns="3"
         android:padding="8dp"
         android:scrollbars="vertical"
+        android:verticalSpacing="8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="3"
         tools:listitem="@layout/item_hamster_custom" />
-
-
-
 
 </RelativeLayout>
