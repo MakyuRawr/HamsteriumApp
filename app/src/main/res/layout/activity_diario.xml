@@ -11,8 +11,9 @@
 
     <Spinner
         android:id="@+id/sp_hamster_type"
-        android:layout_width="188dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@drawable/wood_3" />
 
