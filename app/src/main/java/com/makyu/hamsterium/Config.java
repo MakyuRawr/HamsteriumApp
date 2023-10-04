@@ -48,8 +48,8 @@ public class Config extends AppCompatActivity {
 
 
 
-                //Intent intent = new Intent(Config.this, Register.class);
-                //startActivity(intent);
+                Intent intent = new Intent(Config.this, Register.class);
+                startActivity(intent);
             }
         });
     }
