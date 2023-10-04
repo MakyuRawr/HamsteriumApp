@@ -11,11 +11,11 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="91dp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:text="Configuración"
-        android:textSize="38dp" />
+        android:textSize="48sp" />
 
     <!-- Volumen General -->
     <RelativeLayout
@@ -80,7 +80,7 @@
     <!-- Volumen de Efectos -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
 
         <TextView
@@ -106,5 +106,51 @@
             android:progress="50" />
 
     </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="778dp"
+        android:layout_height="238dp"
+        android:layout_marginBottom="16dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnIniciarSesion"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="225dp"
+            android:layout_marginBottom="32dp"
+            android:text="¿Desea guardar sus datos?"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/btnIniciarSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="195dp"
+            android:layout_marginEnd="194dp"
+
+            android:layout_marginBottom="17dp"
+            android:text="¡Inicia sesión!"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvRegistrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="¿No tienes cuenta? ¡Regístrate aquí!"
+        android:textSize="18dp" />
+
 
 </LinearLayout>
