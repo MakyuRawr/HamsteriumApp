@@ -15,7 +15,9 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:text="Configuración"
-        android:textSize="70dp" />
+        android:textSize="70dp"
+        android:textColor="@color/black"
+        android:fontFamily="cursive"/>
 
     <!-- Volumen General -->
     <RelativeLayout
@@ -31,7 +33,9 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:text="Volumen General"
-            android:textSize="25dp" />
+            android:textSize="30dp"
+
+            android:fontFamily="cursive"/>
 
         <SeekBar
             android:id="@+id/skBarGeneral"
@@ -62,7 +66,8 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:text="Volumen de Música"
-            android:textSize="25dp" />
+            android:textSize="30dp"
+            android:fontFamily="cursive"/>
 
         <SeekBar
             android:id="@+id/skBarMusica"
@@ -91,7 +96,8 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:text="Volumen de Efectos"
-            android:textSize="25dp" />
+            android:textSize="30dp"
+            android:fontFamily="cursive"/>
 
         <SeekBar
             android:id="@+id/skBarEfectos"
@@ -104,6 +110,12 @@
             android:layout_marginBottom="15dp"
             android:max="100"
             android:progress="50" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="427dp">
 
     </RelativeLayout>
 
@@ -121,10 +133,12 @@
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="225dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="226dp"
+            android:layout_marginBottom="49dp"
+            android:fontFamily="cursive"
             android:text="¿Desea guardar sus datos?"
-            android:textSize="24dp" />
+            android:textSize="34dp"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/btnIniciarSesion"
@@ -139,18 +153,43 @@
 
             android:layout_marginBottom="17dp"
             android:text="¡Inicia sesión!"
-            android:textSize="20dp" />
+            android:textSize="30dp"
+            android:fontFamily="cursive"
+            />
 
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tvRegistrarse"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
+        android:fontFamily="cursive"
         android:text="¿No tienes cuenta? ¡Regístrate aquí!"
-        android:textSize="18dp" />
+        android:textColor="#4A9E8D"
+        android:textSize="25dp" />
+
+
+    <RelativeLayout
+        android:layout_width="776dp"
+        android:layout_height="115dp">
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="250dp"
+            android:layout_marginBottom="8dp"
+            android:text="Cerrar Sesión"
+            android:textSize="25dp"
+            android:fontFamily="cursive"
+
+            android:visibility="gone"/>
+    </RelativeLayout>
 
 
 </LinearLayout>

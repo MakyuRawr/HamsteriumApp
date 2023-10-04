@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,9 +42,10 @@ public class Login extends AppCompatActivity {
                 // verificamos las credecniales
                 if (usuario.equals(usuarioGuardado) && contrasena.equals(contrasenaGuardada)) {
                     // si ingresa bien los datos le dira que esta bien
-                    Toast.makeText(Login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Inicio de sesión exitosa", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
+
                 } else {
                     // sino, le dirá que ta mal
                     Toast.makeText(Login.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
