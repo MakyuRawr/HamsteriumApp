@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -43,6 +44,17 @@ public class Config extends AppCompatActivity {
 
         Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
+        RatingBar ratingBar = findViewById(R.id.ratingBar);
+
+
+        //configuración d ratingbar
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                Toast.makeText(Config.this, "Calificación: " + rating, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         // BOTON INICAR Sesión

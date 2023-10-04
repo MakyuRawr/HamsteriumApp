@@ -115,14 +115,48 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="427dp">
+        android:layout_height="300dp">
 
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="189dp">
+
+        <TextView
+            android:layout_width="273dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="223dp"
+            android:layout_marginBottom="49dp"
+            android:fontFamily="cursive"
+            android:text="¿Te gusta el juego?"
+            android:textColor="@color/black"
+            android:textSize="38dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="249dp"
+            android:layout_marginBottom="43dp"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            android:progressTint="#F3CB3E"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="778dp"
-        android:layout_height="238dp"
+        android:layout_height="199dp"
         android:layout_marginBottom="16dp">
 
 
@@ -137,8 +171,8 @@
             android:layout_marginBottom="49dp"
             android:fontFamily="cursive"
             android:text="¿Desea guardar sus datos?"
-            android:textSize="34dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="34dp" />
 
         <Button
             android:id="@+id/btnIniciarSesion"
@@ -152,10 +186,9 @@
             android:layout_marginEnd="194dp"
 
             android:layout_marginBottom="17dp"
-            android:text="¡Inicia sesión!"
-            android:textSize="30dp"
             android:fontFamily="cursive"
-            />
+            android:text="¡Inicia sesión!"
+            android:textSize="30dp" />
 
     </RelativeLayout>
 
@@ -187,8 +220,7 @@
             android:text="Cerrar Sesión"
             android:textSize="25dp"
             android:fontFamily="cursive"
-
-            android:visibility="gone"/>
+            />
     </RelativeLayout>
 
 
