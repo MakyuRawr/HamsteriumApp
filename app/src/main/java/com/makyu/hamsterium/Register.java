@@ -1,6 +1,7 @@
 package com.makyu.hamsterium;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,18 +36,22 @@ public class Register extends AppCompatActivity {
                 String contrasena = etContrasena_R.getText().toString();
                 String confirmarContrasena = etConfirmarContrasena_R.getText().toString();
 
-                // Validar que las contraseñas coincidan
+                //veroficamos si las pass coinciden
                 if (contrasena.equals(confirmarContrasena)) {
-                    // Aquí puedes implementar la lógica para registrar al usuario
-                    // Por ejemplo, guardar los datos en una base de datos o realizar una solicitud al servidor
 
-                    // Luego, puedes redirigir al usuario a la actividad de inicio de sesión
+                    // tomamos los datos en SharedPreferences
+                    SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putString("usuario", usuario);
+                    editor.putString("contrasena", contrasena);
+                    editor.apply();
+
+                    // Redirigir al usuario a la actividad de inicio de sesión
                     Intent intent = new Intent(Register.this, Login.class);
                     startActivity(intent);
-
-                    //si las contraseñas no son iguales
                 } else {
-                    // le muestra un mensaje de error
+                    // Mostrar un mensaje de error
                     Toast.makeText(Register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
             }

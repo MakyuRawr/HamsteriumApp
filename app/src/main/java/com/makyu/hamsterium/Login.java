@@ -1,6 +1,7 @@
 package com.makyu.hamsterium;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,22 +29,26 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String username = etUsuario_L.getText().toString();
-                String password = etContrasena_L.getText().toString();
+                // Guardamos lo que el usuario escribió
+                String usuario = etUsuario_L.getText().toString();
+                String contrasena = etContrasena_L.getText().toString();
 
-                //si las credenciales tan bien
-                if (validarCredenciales(username, password)) {
+                // tomamos los datos que estan en mis preferencias
+                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
+                String usuarioGuardado = sharedPreferences.getString("usuario", "");
+                String contrasenaGuardada = sharedPreferences.getString("contrasena", "");
 
-                    //le muestra que el inicio fue correcto
+                // verificamos las credecniales
+                if (usuario.equals(usuarioGuardado) && contrasena.equals(contrasenaGuardada)) {
+                    // si ingresa bien los datos le dira que esta bien
                     Toast.makeText(Login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
-
-                    //si no
                 } else {
-                    // le dice que las credenciales estan mal
-                    Toast.makeText(Login.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    // sino, le dirá que ta mal
+                    Toast.makeText(Login.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
