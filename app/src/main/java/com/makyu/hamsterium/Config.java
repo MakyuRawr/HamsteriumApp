@@ -46,6 +46,8 @@ public class Config extends AppCompatActivity {
 
         RatingBar ratingBar = findViewById(R.id.ratingBar);
 
+        Button btnGps = findViewById(R.id.btnGps);
+
 
         //configuración d ratingbar
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -77,7 +79,7 @@ public class Config extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // Redirige al usuario a la pantalla de registro
+                //redirige al usuario a la pantalla de registro
                 Intent intent = new Intent(Config.this, Register.class);
                 startActivity(intent);
             }
@@ -141,6 +143,18 @@ public class Config extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        btnGps.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), mapaBox.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+
     }
 
 }

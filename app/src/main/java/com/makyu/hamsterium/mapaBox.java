@@ -15,7 +15,7 @@ public class mapaBox extends AppCompatActivity {
         setContentView(R.layout.mapa_box);
 
         MapView mapView = findViewById(R.id.mapView);
-        mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS);
+        mapView.getMapboxMap().loadStyleUri(Style.SATELLITE_STREETS);
 
     }
 }
