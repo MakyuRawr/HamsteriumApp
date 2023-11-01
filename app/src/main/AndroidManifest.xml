@@ -13,13 +13,16 @@
         android:theme="@style/Theme.Hamsterium"
         tools:targetApi="31">
         <activity
+            android:name=".mapaBox"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Register"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Diario"
             android:exported="false"
@@ -36,27 +39,22 @@
             android:name=".Bendicion"
             android:exported="false"
             android:screenOrientation="portrait" />
-
-
         <activity
             android:name=".Splash"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
     </application>
