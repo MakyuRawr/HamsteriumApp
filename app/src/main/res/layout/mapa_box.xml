@@ -7,6 +7,7 @@
     tools:context=".mapaBox"
     android:background="@drawable/wood_3">
 
+
     <com.mapbox.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="607dp"

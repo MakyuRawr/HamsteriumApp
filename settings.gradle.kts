@@ -26,6 +26,7 @@ dependencyResolutionManagement {
                 password = MAPBOX_DOWNLOADS_TOKEN
             }
         }
+
     }
 }
 
