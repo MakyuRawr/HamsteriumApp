@@ -1,94 +1,137 @@
 package com.makyu.hamsterium;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
+import static com.mapbox.maps.plugin.animation.CameraAnimationsUtils.getCamera;
+import static com.mapbox.maps.plugin.gestures.GesturesUtils.getGestures;
+
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mapbox.android.gestures.MoveGestureDetector;
+import com.mapbox.bindgen.Expected;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
+import com.mapbox.maps.EdgeInsets;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.Style;
-import com.mapbox.maps.plugin.annotation.annotations.PointAnnotationManager;
-import com.mapbox.maps.plugin.annotation.annotations.PointAnnotationOptions;
+import com.mapbox.maps.plugin.animation.MapAnimationOptions;
+import com.mapbox.maps.plugin.gestures.OnMoveListener;
+import com.mapbox.navigation.core.MapboxNavigation;
+import com.mapbox.navigation.core.directions.session.RoutesObserver;
+import com.mapbox.navigation.core.directions.session.RoutesUpdatedResult;
+import com.mapbox.navigation.core.trip.session.LocationMatcherResult;
+import com.mapbox.navigation.core.trip.session.LocationObserver;
+import com.mapbox.navigation.ui.base.util.MapboxNavigationConsumer;
+import com.mapbox.navigation.ui.maps.location.NavigationLocationProvider;
+import com.mapbox.navigation.ui.maps.route.line.api.MapboxRouteLineApi;
+import com.mapbox.navigation.ui.maps.route.line.api.MapboxRouteLineView;
+import com.mapbox.navigation.ui.maps.route.line.model.RouteLineError;
+import com.mapbox.navigation.ui.maps.route.line.model.RouteSetValue;
+
+
+/*
+import static com.mapbox.maps.plugin.animation.CameraAnimationsUtils.getCamera;
+import static com.mapbox.maps.plugin.gestures.GesturesUtils.addOnMapClickListener;
+import static com.mapbox.maps.plugin.gestures.GesturesUtils.getGestures;
+import static com.mapbox.maps.plugin.locationcomponent.LocationComponentUtils.getLocationComponent;
+import static com.mapbox.navigation.base.extensions.RouteOptionsExtensions.applyDefaultNavigationOptions;
+ */
+
+
 
 public class mapaBox extends AppCompatActivity {
 
     private MapView mapView;
-    private static final int REQUEST_LOCATION = 1;
-    private PointAnnotationManager pointAnnotationManager;
+    MaterialButton setRoute;
+    FloatingActionButton focusLocationBtn;
 
-    @Override
+    private final NavigationLocationProvider navigationLocationProvider = new NavigationLocationProvider();
+
+    private MapboxRouteLineView routeLineView;
+
+    private MapboxRouteLineApi routeLineApi;
+    private final LocationObserver locationObserver = new LocationObserver() {
+        @Override
+        public void onNewRawLocation(@NonNull Location location) {
+
+        }
+
+        @Override
+        public void onNewLocationMatcherResult(@NonNull LocationMatcherResult locationMatcherResult) {
+
+            Location location = locationMatcherResult.getEnhancedLocation();
+            navigationLocationProvider.changePosition(location, locationMatcherResult.getKeyPoints(), null, null);
+            if(focusLocation){
+                updateCamera(Point.fromLngLat(location.getLongitude(), location.getLatitude()), (double) location.getBearing());
+
+            }
+
+        }
+    };
+
+    private final RoutesObserver routesObserver = new RoutesObserver() {
+        @Override
+        public void onRoutesChanged(@NonNull RoutesUpdatedResult routesUpdatedResult) {
+            routeLineApi.setNavigationRoutes(routesUpdatedResult.getNavigationRoutes(), new MapboxNavigationConsumer<Expected<RouteLineError, RouteSetValue>>() {
+                @Override
+                public void accept(Expected<RouteLineError, RouteSetValue> routeLineErrorRouteSetValueExpected) {
+                    Style style = mapView.getMapboxMap().getStyle();
+                    if(style != null){
+                        routeLineView.renderRouteDrawData(style, routeLineErrorRouteSetValueExpected);
+                    }
+                }
+            });
+        }
+    };
+
+    boolean focusLocation = true;
+    private MapboxNavigation mapboxNavigation;
+
+    private void updateCamera(Point point, double bearing){
+        MapAnimationOptions animationOptions = new MapAnimationOptions.Builder().duration(1500L).build();
+        CameraOptions cameraOptions = new CameraOptions.Builder().center(point).zoom(18.0).bearing(bearing).pitch(45.0)
+                .padding(new EdgeInsets(1000.0, 0.0, 0.0, 0.0)).build();
+
+        getCamera(mapView).easeTo(cameraOptions, animationOptions);
+    }
+
+    private final OnMoveListener onMoveListener = new OnMoveListener() {
+        @Override
+        public void onMoveBegin(@NonNull MoveGestureDetector moveGestureDetector) {
+            focusLocation = false;
+            getGestures(mapView).removeOnMoveListener(this);
+            focusLocationBtn.show();
+
+        }
+
+        @Override
+        public boolean onMove(@NonNull MoveGestureDetector moveGestureDetector) {
+            return false;
+        }
+
+        @Override
+        public void onMoveEnd(@NonNull MoveGestureDetector moveGestureDetector) {
+
+        }
+    };
+
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapa_box);
 
-        mapView = findViewById(R.id.mapView);
-        mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS, this::onMapReady);
+        mapView = (MapView) findViewById(R.id.mapView);
 
-        obtenerUbicacion();
+        MapView mapView = findViewById(R.id.mapView);
+        mapView.getMapboxMap().loadStyleUri(Style.SATELLITE_STREETS);
+
+
     }
 
-    private void onMapReady(@NonNull Style style) {
-        // Cuando el mapa esté listo, inicializamos el PointAnnotationManager
-        pointAnnotationManager = mapView.getRotation().createPointAnnotationManager();
-    }
-
-    private void obtenerUbicacion() {
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        LocationListener locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                if (location != null && mapView != null) {
-                    Point point = Point.fromLngLat(location.getLongitude(), location.getLatitude());
-
-                    // Centramos la cámara en la ubicación del usuario
-                    mapView.getMapboxMap().setCamera(new CameraOptions.Builder()
-                            .center(point)
-                            .zoom(15.0)
-                            .build());
-
-                    // Añadimos el marcador en la ubicación del usuario
-                    addMarker(point);
-                }
-            }
-
-            // ...implementa los otros métodos de LocationListener...
-        };
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-        }
-    }
-
-    private void addMarker(Point point) {
-        PointAnnotationOptions options = new PointAnnotationOptions()
-                .withPoint(point)
-                .withIconImage("icon-image"); // Asegúrate de que el icono está cargado en el estilo del mapa
-
-        pointAnnotationManager.create(options);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_LOCATION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                obtenerUbicacion();
-            } else {
-                // Manejar el caso en que el permiso no fue concedido
-            }
-        }
-    }
 }

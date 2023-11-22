@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.mapbox.maps:android:10.16.0")
+    implementation("com.mapbox.navigation:android:2.15.2")
 
 
 }
