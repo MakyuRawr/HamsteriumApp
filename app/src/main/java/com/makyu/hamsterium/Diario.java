@@ -1,22 +1,14 @@
 package com.makyu.hamsterium;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import com.makyu.hamsterium.HamsterAdapter;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,6 +16,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Diario extends AppCompatActivity {
+
+
+    //añadir mpás hamsetrs
     private Spinner spinnerHamsterType;
     private List<Hamster> hamsterList;
     private List<Hamster> filteredHamsters;

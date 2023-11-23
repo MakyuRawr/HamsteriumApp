@@ -10,6 +10,8 @@
     tools:context=".Diario">
 
 
+    <!-- Mejorar Los hamster que se muestran-->
+
     <!-- barra de categorias-->
     <Spinner
         android:id="@+id/sp_hamster_type"
