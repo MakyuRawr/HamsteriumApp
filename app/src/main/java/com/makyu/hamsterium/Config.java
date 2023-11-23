@@ -67,7 +67,7 @@ public class Config extends AppCompatActivity {
                 Intent intent = new Intent(Config.this, Login.class);
                 startActivity(intent);
                 sesionActiva = true;
-                // cerramos el activity actual para evitar que el usuario regrese con "atras"
+                //cerramos el activity actual para evitar que el usuario regrese con "atras"
                 finish();
 
             }
@@ -87,7 +87,7 @@ public class Config extends AppCompatActivity {
 
 
 
-        // boton registrarse en el text view
+        //boton registrarse en el text view
         tvRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

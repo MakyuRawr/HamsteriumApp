@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "273762230770",
+    "project_id": "hamsterium-674db",
+    "storage_bucket": "hamsterium-674db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273762230770:android:9a03417dbc42675fc3cb6b",
+        "android_client_info": {
+          "package_name": "com.makyu.hamsterium"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL9__RjzWgB_ZbdISghqoRDECE9Hhth4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
