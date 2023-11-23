@@ -300,13 +300,13 @@ public class mapaBox extends AppCompatActivity {
                         focusLocationBtn.performClick();
 
                         setRoute.setEnabled(true);
-                        setRoute.setText("Set route");
+                        setRoute.setText("Establecer Ruta");
                     }
 
                     @Override
                     public void onFailure(@NonNull List<RouterFailure> list, @NonNull RouteOptions routeOptions) {
                         setRoute.setEnabled(true);
-                        setRoute.setText("Set route");
+                        setRoute.setText("Establecer Ruta");
                         Toast.makeText(mapaBox.this, "Ruta fallida", Toast.LENGTH_SHORT).show();
 
                     }
