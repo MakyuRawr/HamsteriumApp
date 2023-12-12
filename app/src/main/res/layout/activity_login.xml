@@ -78,6 +78,7 @@
         android:layout_marginStart="255dp"
         android:layout_marginEnd="262dp"
         android:layout_marginBottom="536dp"
+        android:onClick="IniciarSesion"
         android:text="Iniciar Sesión" />
 
 </RelativeLayout>

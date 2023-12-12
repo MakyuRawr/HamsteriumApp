@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2E2D5"
+    android:background="@drawable/gradient_background"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".Register">
 
 
-
+    <!-- Nombre de Usuario -->
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -19,60 +19,90 @@
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginStart="254dp"
-        android:layout_marginBottom="207dp"
+        android:layout_marginStart="268dp"
+        android:layout_marginBottom="300dp"
         android:fontFamily="cursive"
         android:text="Registrarse"
-        android:textSize="70dp"
+        android:textColor="#000000"
+        android:textSize="70dp" />
+
+    <!-- Contraseña -->
+
+    <!-- Confirmar Contraseña -->
+    <EditText
+        android:id="@+id/etContrasena_R"
+        android:layout_width="568dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etConfirmarContrasena_R"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+
+        android:drawableStart="@drawable/ic_password"
+
+        android:hint="Contraseña"
+        android:inputType="textPassword"
         android:textColor="#000000" />
 
-    <!-- Nombre de Usuario -->
     <EditText
         android:id="@+id/etUsuario_R"
-        android:layout_width="match_parent"
+        android:layout_width="571dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etContrasena_R"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:drawableStart="@drawable/ic_user"
         android:hint="Correo de Usuario"
+
         android:textColor="#000000" />
 
-    <!-- Contraseña -->
-    <EditText
-        android:id="@+id/etContrasena_R"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etConfirmarContrasena_R"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColor="#000000"/>
+    <!-- boton aceptar   -->
 
-    <!-- Confirmar Contraseña -->
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+
+        android:layout_marginStart="472dp"
+        android:layout_marginBottom="611dp"
+        android:onClick="RegistrarUser"
+        android:text="Registrarse"
+        app:iconTint="#AE4747" />
+
     <EditText
         android:id="@+id/etConfirmarContrasena_R"
-        android:layout_width="390dp"
+        android:layout_width="581dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnRegistrarse"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_centerInParent="true"
+
+        android:layout_marginStart="99dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="34dp"
+        android:drawableStart="@drawable/ic_password"
         android:hint="Confirmar Contraseña"
         android:inputType="textPassword"
         android:textColor="#000000" />
 
-    <!-- boton aceptar   -->
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:onClick="RegistrarUser"
-        android:text="Registrarse" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/hampterRegister"
+        android:layout_width="298dp"
+        android:layout_height="317dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="216dp"
+        android:layout_marginBottom="886dp"
+        android:src="@drawable/hamster_register"
+        app:civ_border_color="#F2E2D5"
+        app:civ_border_width="10dp" />
+
 
 </RelativeLayout>

@@ -15,11 +15,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Config extends AppCompatActivity {
 
     private SeekBar skBarGeneral;
     private SeekBar skBarMusica;
     private SeekBar skBarEfectos;
+
+    private FirebaseAuth mAuth;
 
     private boolean sesionActiva = false;
 
@@ -31,6 +35,9 @@ public class Config extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
+
+
+        mAuth = FirebaseAuth.getInstance();
 
 
         skBarGeneral = findViewById(R.id.skBarGeneral);
@@ -120,25 +127,20 @@ public class Config extends AppCompatActivity {
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // borramos los datos almacenados del usuario
-                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                //ocultamo el botón de cerrar sesión luego de apretar "cerrar sesión"
-                //btnCerrarSesion.setVisibility(View.GONE);
+                //cierra la sesión en Firebase
+                mAuth.signOut();
 
-                editor.clear();
-                editor.apply();
+                //llevamos al usuario al login
+                Intent intent = new Intent(Config.this, Login.class);
+                startActivity(intent);
+
 
                 // le decimos que se cerró la sesión
                 Toast.makeText(Config.this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
                 sesionActiva = false;
 
 
-
-                // llevamos al usuario al login
-                Intent intent = new Intent(Config.this, Login.class);
-                startActivity(intent);
                 // cerramos el activity actual para evitar que el usuario regrese con "atras"
                 finish();
             }

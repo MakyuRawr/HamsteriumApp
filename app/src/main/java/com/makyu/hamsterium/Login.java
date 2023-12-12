@@ -1,5 +1,7 @@
 package com.makyu.hamsterium;
 
+import static android.app.ProgressDialog.show;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,57 +10,84 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
-    private EditText etUsuario_L;
-    private EditText etContrasena_L;
+    private EditText correo;
+    private EditText pass;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etUsuario_L = findViewById(R.id.etUsuario_L);
-        etContrasena_L = findViewById(R.id.etContrasena_L);
+        //conexion a la base de datos
+        mAuth = FirebaseAuth.getInstance();
+
+        correo = findViewById(R.id.etUsuario_L);
+        pass = findViewById(R.id.etContrasena_L);
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Guardamos lo que el usuario escribió
-                String usuario = etUsuario_L.getText().toString();
-                String contrasena = etContrasena_L.getText().toString();
-
-                // tomamos los datos que estan en mis preferencias
-                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
-                String usuarioGuardado = sharedPreferences.getString("usuario", "");
-                String contrasenaGuardada = sharedPreferences.getString("contrasena", "");
-
-                // verificamos las credecniales
-                if (usuario.equals(usuarioGuardado) && contrasena.equals(contrasenaGuardada)) {
-                    // si ingresa bien los datos le dira que esta bien
-                    Toast.makeText(Login.this, "Inicio de sesión exitosa", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
-
-                } else {
-                    // sino, le dirá que ta mal
-                    Toast.makeText(Login.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
     }
 
-    //hacemos la validación
-    private boolean validarCredenciales(String username, String password) {
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //updateUI(currentUser);
+    }
 
 
-        return username.equals("usuario") && password.equals("contraseña");
+    public void IniciarSesion(View view){
+
+        String email = correo.getText().toString().trim();
+        String password = pass.getText().toString();
+
+        if (!email.isEmpty() && !password.isEmpty()) {
+
+            if (!email.isEmpty() && !password.isEmpty()) {
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+
+                                    FirebaseUser user = mAuth.getCurrentUser();
+
+                                    Intent i = new Intent(getApplicationContext(), Config.class);
+                                    startActivity(i);
+
+                                    //para que no vuelva con el boton "atrás"
+                                    finish();
+
+                                    Toast.makeText(getApplicationContext(), "Sesión Iniciada",
+                                            Toast.LENGTH_SHORT).show();
+                                    //updateUI(user);
+                                } else {
+
+                                    Toast.makeText(getApplicationContext(), "Hubo un problema, intentalo nuevamente",
+                                            Toast.LENGTH_SHORT).show();
+                                    //updateUI(null);
+                                }
+                            }
+
+                        });
+            }
+
+        } else {
+            Toast.makeText(this, "Por favor, ingrese correo electrónico y contraseña", Toast.LENGTH_SHORT).show();
+        }
     }
 }

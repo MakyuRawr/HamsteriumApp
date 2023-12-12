@@ -65,9 +65,12 @@ public class Register extends AppCompatActivity {
 
     public void RegistrarUser(View view) {
 
-        if (pass.getText().toString().equals(passConfirm.getText().toString())) {
+        String email = correo.getText().toString().trim();
+        String password = pass.getText().toString();
+        String confirmPassword = passConfirm.getText().toString();
 
-            mAuth.createUserWithEmailAndPassword(correo.getText().toString(), pass.getText().toString())
+        if (!email.isEmpty() && !password.isEmpty() && password.equals(confirmPassword)) {
+            mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -75,21 +78,32 @@ public class Register extends AppCompatActivity {
 
 
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Intent i = new Intent(getApplicationContext(), Config.class);
+
+                                Toast.makeText(Register.this, "¡Usuario Creado!", Toast.LENGTH_SHORT).show();
+
+                                Intent i = new Intent(Register.this, Config.class);
                                 startActivity(i);
-                                Toast.makeText(getApplicationContext(), "¡Usuario Creado!",Toast.LENGTH_SHORT).show();
+
+                                //para que no vuelva con el boton <atrás>
+                                finish();
 
                                 //updateUI(user);
                             } else {
-                                Toast.makeText(getApplicationContext(), "Parece que hubo un error, intentalo denuevo",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "mínimo de 6 carácteres",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "Error al crear el usuario: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 //updateUI(null);
                             }
                         }
                     });
 
         } else{
-            // Mostrar un mensaje de error
-            Toast.makeText(Register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            if (email.isEmpty()) {
+                Toast.makeText(Register.this, "El campo de correo electrónico no puede estar vacío", Toast.LENGTH_SHORT).show();
+            } else if (password.isEmpty()) {
+                Toast.makeText(Register.this, "El campo de contraseña no puede estar vacío", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(Register.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            }
         }
 
 

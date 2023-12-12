@@ -55,6 +55,8 @@ dependencies {
     implementation("com.mapbox.maps:android:10.16.0")
     implementation("com.mapbox.navigation:android:2.17.7")
 
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
 
 }
 
