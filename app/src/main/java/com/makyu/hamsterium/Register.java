@@ -51,7 +51,7 @@ public class Register extends AppCompatActivity {
 
 
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
-
+//buuuu pueba
 
     }
 
