@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.makyu.hamsterium"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.makyu.hamsterium"
@@ -56,6 +56,21 @@ dependencies {
     implementation("com.mapbox.navigation:android:2.17.7")
 
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //Dependencias para trabajar con MQTT
+
+    implementation ("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0")
+
+    implementation ("com.android.support:support-v4:28.0.0")
+    implementation ("com.android.support:localbroadcastmanager:28.0.0")
+
+    implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1") {
+        exclude(group = "com.android.support", module = "appcompat-v7")
+        exclude(group = "com.android.support", module = "support-v4")
+    }
+
+
+
 
 
 }

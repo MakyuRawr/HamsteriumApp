@@ -18,27 +18,13 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="122dp"
-        android:layout_marginEnd="192dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="201dp"
         android:fontFamily="cursive"
         android:text="Iniciar Sesión"
-        android:textSize="70dp"
+        android:textColor="#000000"
 
-        android:textColor="#000000"/>
-
-    <ImageView
-        android:layout_width="199dp"
-        android:layout_height="102dp"
-        android:layout_above="@+id/etUsuario_L"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="294dp"
-        android:layout_marginBottom="57dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:textSize="70dp" />
 
     <EditText
         android:id="@+id/etUsuario_L"
@@ -69,16 +55,31 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="299dp"
-        android:layout_height="58dp"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="255dp"
-        android:layout_marginEnd="262dp"
-        android:layout_marginBottom="536dp"
+        android:layout_marginStart="471dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="582dp"
         android:onClick="IniciarSesion"
         android:text="Iniciar Sesión" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/hampterRegister"
+        android:layout_width="388dp"
+        android:layout_height="221dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="179dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="864dp"
+        android:src="@drawable/hamster_login"
+        app:civ_border_color="#F2E2D5"
+        app:civ_border_width="10dp" />
 
 </RelativeLayout>
